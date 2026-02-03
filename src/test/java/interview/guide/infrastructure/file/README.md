@@ -17,33 +17,30 @@
 
 ```bash
 # 在项目根目录运行
-cd /Users/guide/Desktop/interview-guide
-
-# 运行所有测试
-./gradlew test
+mvn test
 
 # 只运行 DocumentParseService 相关测试
-./gradlew test --tests "*DocumentParseService*"
+mvn test -Dtest="*DocumentParseService*"
 ```
 
 ### 运行特定测试类
 
 ```bash
 # 运行单元测试
-./gradlew test --tests "interview.guide.infrastructure.file.DocumentParseServiceTest"
+mvn test -Dtest=DocumentParseServiceTest
 
 # 运行集成测试
-./gradlew test --tests "interview.guide.infrastructure.file.DocumentParseIntegrationTest"
+mvn test -Dtest=DocumentParseIntegrationTest
 ```
 
 ### 运行特定测试方法
 
 ```bash
 # 运行单个测试方法
-./gradlew test --tests "DocumentParseServiceTest.testParseTxtFile"
+mvn test -Dtest=DocumentParseServiceTest#testParseTxtFile
 
 # 使用通配符
-./gradlew test --tests "DocumentParseServiceTest.testParse*"
+mvn test -Dtest=DocumentParseServiceTest#testParse*
 ```
 
 ## 📊 测试覆盖
@@ -98,7 +95,7 @@ cd /Users/guide/Desktop/interview-guide
 
 ### 测试资源文件位置
 ```
-app/src/test/resources/test-files/
+src/test/resources/test-files/
 ├── README.md              # 测试文件说明
 ├── sample-resume.txt      # TXT 格式简历样例
 └── sample-resume.md       # Markdown 格式简历样例
@@ -130,11 +127,11 @@ app/build/reports/tests/test/index.html
 ### 生成测试覆盖率报告
 
 ```bash
-# 运行测试并生成覆盖率报告
-./gradlew test jacocoTestReport
+# 运行测试并生成报告
+mvn test
 
 # 查看报告
-open app/build/reports/jacoco/test/html/index.html
+open target/site/surefire-report.html
 ```
 
 ## 🔍 测试要点

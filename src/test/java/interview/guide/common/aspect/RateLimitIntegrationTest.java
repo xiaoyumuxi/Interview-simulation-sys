@@ -21,15 +21,17 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * 限流功能集成测试
  *
- * <p>需要 Redis 服务运行。
+ * <p>
+ * 需要 Redis 服务运行。
  *
- * <p>运行方式：
+ * <p>
+ * 运行方式：
+ * 
  * <pre>
- * # 启动 Redis
- * docker run -d -p 6379:6379 redis:alpine
+ * # 启动 Redis 服务
  *
  * # 取消 @Disabled 注解后运行
- * ./gradlew test --tests "RateLimitIntegrationTest"
+ * mvn test -Dtest=RateLimitIntegrationTest
  * </pre>
  */
 @DisplayName("限流功能集成测试（需要 Redis）")
@@ -114,8 +116,7 @@ class RateLimitIntegrationTest {
                 luaScript,
                 RScript.ReturnType.VALUE,
                 keysList,
-                args
-        );
+                args);
 
         if (result instanceof Number) {
             return ((Number) result).longValue();
